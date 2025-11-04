@@ -8,7 +8,7 @@ const Dashboard: React.FC = () => {
   const [showStats, setShowStats] = useState(true);
 
   return (
-    <div className="relative">
+    <div className="relative h-[984px]" >
       <DashboardHeader showStats={showStats} setShowStats={setShowStats} />
       <StatsSection showStats={showStats} />
       <ReportAnalytics showStats={showStats} />

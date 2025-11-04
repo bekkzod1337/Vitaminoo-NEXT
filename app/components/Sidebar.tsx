@@ -33,7 +33,7 @@ const Sidebar = () => {
   return (
     <aside
       className="flex flex-col justify-between bg-white border border-[#ECEFF3] shadow-sm rounded-3xl 
-      absolute left-[20px] top-[20px] w-[280px] h-[100vh] p-5"
+      absolute left-[20px] top-[20px] w-[280px] h-[984px] p-5"
     >
       <div className="flex flex-col gap-12 w-[248px] mx-auto">
         {/* Logo */}
@@ -77,7 +77,7 @@ const Sidebar = () => {
 
       {/* Bottom profile */}
       <div
-        className="flex items-center justify-between w-[248px] h-[56px] mx-auto p-[4px_12px_4px_4px] 
+        className="flex items-center justify-between mb-4 w-[248px] h-[56px] mx-auto p-[4px_12px_4px_4px] 
         border border-[#ECEFF3] shadow-sm rounded-full"
       >
         {/* Left side */}

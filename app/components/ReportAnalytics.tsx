@@ -43,6 +43,7 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ showStats }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: { legend: { display: false } },
     scales: {
       y: { beginAtZero: true, ticks: { stepSize: 10000 } },
@@ -61,12 +62,12 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ showStats }) => {
   const maskValue = (value: string | number) => (showStats ? value : '*****');
 
   return (
-    <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
+    <Stack className='mt-5' direction={{ xs: 'column', md: 'row' }} spacing={3}>
       {/* Left Section */}
-      <Card
+      <Card className='w-[655px] h-[668px]'
         sx={{
           flex: 2,
-          p: 3,
+          p: 0,
           borderRadius: 3,
           border: '1px solid #ECEFF3',
           boxShadow: '0px 1px 3px rgba(16,24,40,0.1)',
@@ -74,8 +75,11 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ showStats }) => {
       >
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Stack direction="row" alignItems="center" spacing={1}>
-            <Insights sx={{ color: '#3B82F6' }} />
-            <Typography fontSize={20} fontWeight={600}>
+            {/* icon circle 44x44 */}
+            <Box sx={{ width: 44, height: 44, bgcolor: '#2D71F7', borderRadius: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', p: 1 }}>
+              <Insights sx={{ color: '#FFFFFF', fontSize: 24 }} />
+            </Box>
+            <Typography fontSize={24} fontWeight={500} sx={{ width: 180 }}>
               Report Analytics
             </Typography>
           </Stack>
@@ -95,26 +99,30 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ showStats }) => {
           </Stack>
         </Stack>
 
-        <Box sx={{ mt: 3 }}>
-          <Bar data={data} options={options} />
+        {/* Chart wrapper: matches provided dimensions (615x444) with inner plot area 517x352 */}
+        <Box sx={{ mt: 3, px: 2.5, py: 2.5, width: '615px', height: '444px', border: '1px solid #DFE1E7', borderRadius: '16px', boxSizing: 'border-box', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
+            <Bar data={data} options={options} />
+          </Box>
         </Box>
 
+        {/* Three summary cards with exact sizes from spec: width ~191.67px, height 92px, padding 12px, borderRadius 16px */}
         <Stack direction="row" spacing={3} mt={3}>
-          <Card sx={{ flex: 1, p: 2, textAlign: 'center', borderRadius: 2 }}>
-            <Typography color="#555">Amount</Typography>
-            <Typography fontWeight={600} fontSize={20}>
+          <Card sx={{ width: '191.67px', height: '92px', p: 1.5, borderRadius: '16px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Typography color="#555" sx={{ fontSize: '18px', lineHeight: '25px' }}>Amount</Typography>
+            <Typography fontWeight={600} fontSize={28} sx={{ mt: 0.5 }}>
               {maskValue('8,439,000')}
             </Typography>
           </Card>
-          <Card sx={{ flex: 1, p: 2, textAlign: 'center', borderRadius: 2 }}>
-            <Typography color="#555">Growth</Typography>
-            <Typography fontWeight={600} fontSize={20}>
+          <Card sx={{ width: '191.67px', height: '92px', p: 1.5, borderRadius: '16px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Typography color="#555" sx={{ fontSize: '18px', lineHeight: '25px' }}>Growth</Typography>
+            <Typography fontWeight={600} fontSize={28} sx={{ mt: 0.5 }}>
               {maskValue('+2,530,760')}
             </Typography>
           </Card>
-          <Card sx={{ flex: 1, p: 2, textAlign: 'center', borderRadius: 2 }}>
-            <Typography color="#555">Growth Percentage</Typography>
-            <Typography fontWeight={600} fontSize={20}>
+          <Card sx={{ width: '191.67px', height: '92px', p: 1.5, borderRadius: '16px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Typography color="#555" sx={{ fontSize: '18px', lineHeight: '25px' }}>Growth Percentage</Typography>
+            <Typography fontWeight={600} fontSize={28} sx={{ mt: 0.5 }}>
               {maskValue('17.00%')}
             </Typography>
           </Card>
@@ -124,75 +132,77 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ showStats }) => {
       {/* Right Section */}
       <Card
         sx={{
-          flex: 1,
-          p: 3,
-          borderRadius: 3,
+          width: '424px',
+          height: '668px',
+          p: '2px',
+          borderRadius: '20px',
           border: '1px solid #ECEFF3',
           boxShadow: '0px 1px 3px rgba(16,24,40,0.1)',
+          boxSizing: 'border-box',
         }}
       >
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Stack direction="row" alignItems="center" spacing={1}>
-            <Star sx={{ color: '#22C55E' }} />
-            <Typography fontSize={20} fontWeight={600}>
+            <Box sx={{ width: 44, height: 44, bgcolor: '#22C55E', borderRadius: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', p: 1 }}>
+              <Star sx={{ color: '#FFFFFF', fontSize: 24 }} />
+            </Box>
+            <Typography fontSize={24} fontWeight={500}>
               Top Products
             </Typography>
           </Stack>
+
           <TextField
             size="small"
             placeholder="Search"
-            sx={{ width: 120, borderRadius: 1 }}
+            sx={{
+              width: '156px',
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '100px',
+                bgcolor: '#F8FAFB',
+                height: '44px',
+              },
+              '& .MuiOutlinedInput-input': { padding: '6px 12px' },
+            }}
           />
         </Stack>
 
-        <Stack direction="row" justifyContent="space-between" mt={3} mb={1}>
-          <Typography fontSize={14} color="#555">
-            Product Name
-          </Typography>
-          <Typography fontSize={14} color="#555">
-            Total Orders
-          </Typography>
-        </Stack>
+        {/* Table container: 384x552 inside right card */}
+        <Box sx={{ mt: 3, width: '384px', height: '552px', background: '#FFFFFF', border: '1px solid #ECEFF3', borderRadius: '12px', boxSizing: 'border-box', display: 'flex', overflow: 'hidden' }}>
+          {/* Product Name column - 267 x 552 */}
+          <Box sx={{ width: '267px', height: '552px', display: 'flex', flexDirection: 'column' }}>
+            {/* Header */}
+            <Box sx={{ display: 'flex', alignItems: 'center', px: '12px', gap: 1, height: '48px', background: '#ECEFF3', borderBottom: '1px solid #DFE1E7' }}>
+              <Typography sx={{ fontSize: '16px', fontWeight: 500, color: '#111' }}>Product Name</Typography>
+            </Box>
 
-        <Stack spacing={2} mt={1}>
-          {topProducts.map((p, i) => (
-            <Stack
-              key={i}
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              sx={{
-                p: 1.2,
-                borderRadius: 2,
-                '&:hover': { backgroundColor: '#F9FAFB' },
-              }}
-            >
-              <Stack direction="row" alignItems="center" spacing={1.2}>
-                <Avatar src={p.img} alt={p.name} sx={{ width: 40, height: 40, borderRadius: 1 }} />
-                <Stack>
-                  <Typography fontWeight={500}>{p.name}</Typography>
-                  <Typography
-                    fontSize={13}
-                    fontWeight={500}
-                    sx={{
-                      color: '#111',
-                      backgroundColor: p.color,
-                      px: 1.2,
-                      borderRadius: 2,
-                      width: 'fit-content',
-                      mt: 0.3,
-                    }}
-                  >
-                    {p.type}
-                  </Typography>
-                </Stack>
-              </Stack>
-              <Typography fontWeight={500} color="#555">
-                {maskValue(`${p.orders} Times`)}
-              </Typography>
-            </Stack>
-          ))}
-        </Stack>
+            {/* Rows */}
+            <Box sx={{ flex: 1, overflowY: 'auto' }}>
+              {topProducts.map((p, i) => (
+                <Box key={i} sx={{ display: 'flex', alignItems: 'center', px: '12px', gap: 1.5, height: '84px', borderBottom: '1px solid #ECEFF3' }}>
+                  <Avatar src={p.img} alt={p.name} sx={{ width: 58, height: 58, borderRadius: '11.2258px' }} />
+                  <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Typography sx={{ fontSize: '16px', fontWeight: 500, color: '#111' }}>{p.name}</Typography>
+                    <Typography sx={{ fontSize: '14px', fontWeight: 500, color: '#111', backgroundColor: p.color, px: 1, borderRadius: 1, width: 'fit-content', mt: 0.3 }}>{p.type}</Typography>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+
+          {/* Revenue / Orders column - 117 x 552 */}
+          <Box sx={{ width: '117px', height: '552px', display: 'flex', flexDirection: 'column', borderLeft: '1px solid #ECEFF3' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '48px', background: '#ECEFF3', borderBottom: '1px solid #DFE1E7' }}>
+              <Typography sx={{ fontSize: '16px', fontWeight: 500, color: '#111' }}>Total Orders</Typography>
+            </Box>
+            <Box sx={{ flex: 1 }}>
+              {topProducts.map((p, i) => (
+                <Box key={i} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '84px', borderBottom: '1px solid #ECEFF3' }}>
+                  <Typography sx={{ fontSize: '16px', fontWeight: 500, color: '#111' }}>{p.orders} Times</Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </Box>
       </Card>
     </Stack>
   );

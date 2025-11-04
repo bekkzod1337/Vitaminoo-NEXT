@@ -15,7 +15,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ showStats, setShowSta
     <>
       <header
         className="flex justify-between items-center
-        w-[1100px] h-[56px] rounded-full px-6 z-20"
+        w-[1100px] h-[56px] border-[#ECEFF3] rounded-full px-6 z-20"
       >
         <h1 className="font-[Manrope] text-[32px] font-medium text-[#111] leading-[45px]">
           Dashboard
@@ -41,7 +41,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ showStats, setShowSta
             </div>
           </div>
 
-          <div className="w-[1px] h-[40px] bg-[#DFE1E7] rotate-90"></div>
+          <div className="w-[40px] h-[1px] bg-[#DFE1E7] rotate-90"></div>
 
           {/* Notification icon */}
           <div
@@ -68,7 +68,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ showStats, setShowSta
       </header>
 
       {showNotifications && (
-        <div className="fixed inset-0 z-30 flex items-center justify-center backdrop-blur-sm bg-black/30">
+        <div className="fixed inset-0 z-30 border-[#ECEFF3] flex items-center justify-center backdrop-blur-sm bg-black/30">
           <div className="bg-white rounded-2xl shadow-lg p-6 w-[400px] relative">
             <button
               onClick={() => setShowNotifications(false)}
