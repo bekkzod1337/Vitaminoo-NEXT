@@ -57,6 +57,7 @@ const ReportAnalytics: React.FC<ReportAnalyticsProps> = ({ showStats }) => {
     { name: 'Fanigan', type: 'Pain relief', color: '#9AE6B4', orders: 180, img: '/product/1.png' },
     { name: 'Fenibut 250mg', type: 'Sedative', color: '#BEE3F8', orders: 120, img: '/product/1.png' },
     { name: 'Azimak 500mg', type: 'Antibiotics', color: '#FFB3C1', orders: 96, img: '/product/1.png' },
+    { name: 'Azimak 500mg', type: 'Antibiotics', color: '#FFB3C1', orders: 96, img: '/product/1.png' },
   ];
 
   const maskValue = (value: string | number) => (showStats ? value : '*****');
